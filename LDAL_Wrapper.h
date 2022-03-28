@@ -19,6 +19,7 @@ public:
   MSTRING GetLOGLDALResultV2(MSTRING defFilePath,MSTRING query,MSTRING json);
   MSTRING GetTDPResultV2(MSTRING defFilePath,MSTRING query,MSTRING json);
   MSTRING GetOTPResultV2(MSTRING defFilePath,MSTRING query,MSTRING json);
+  MSTRING GetCommonJSONResult(MSTRING defFilePath,MSTRING query,MSTRING json);
 };
 
 

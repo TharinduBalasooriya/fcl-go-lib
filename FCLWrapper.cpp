@@ -64,3 +64,9 @@ std::string  FCLWrapper::GetTDPResultV2(const char *defFilePath ,const char *que
     LDAL_Wrapper ldalWrapper;
     return  ldalWrapper.GetTDPResultV2(defFilePath,query,json);
 }
+
+
+std::string  FCLWrapper::GetCommonJSON(const char *defFilePath ,const char *query,const char *json ) {
+    LDAL_Wrapper ldalWrapper;
+    return  ldalWrapper.GetCommonJSONResult(defFilePath,query,json);
+}

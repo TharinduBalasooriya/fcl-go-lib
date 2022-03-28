@@ -18,6 +18,7 @@ public:
     std::string  GetLogLDALResultV2(const char *defFilePath ,const char *query,const char *json);
     std::string  GetTDPResultV2(const char *defFilePath ,const char *query,const char *json);
     std::string  GetOTPResultV2(const char *defFilePath ,const char *query,const char *json);
+    std::string  GetCommonJSON(const char *defFilePath ,const char *query,const char *json);
 };
 
 #endif //CODE_FCLWRAPPER_H

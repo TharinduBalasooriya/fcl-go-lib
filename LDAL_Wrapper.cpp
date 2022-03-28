@@ -450,3 +450,59 @@ std::string LDAL_Wrapper::GetOTPResultV2(std::string defFilePath,std::string que
 }
 
 
+std::string LDAL_Wrapper::GetCommonJSONResult(MSTRING defFilePath, MSTRING query, MSTRING json)
+{
+    int id = 0;
+    DefFileReader dfr;
+    // CAUTION: This file path is hardcoded and can cause crashes. You have been warned!
+    MetaData *pMD = dfr.Read(defFilePath);
+    ScriptReader sr;
+    ScriptReaderOutput op;
+
+
+    std::string bSucc = sr.ProcessScript(pMD, op, queryString);
+    if (bSucc!="")
+    {
+
+        std::wcout << "\nFailed to read script\n";
+        return bSucc;
+    }
+
+    //Parse text to TDPNodeTree
+
+    std::string json ="";
+    std::string jsonline = "";
+
+
+    MSTRINGSTREAM jsonStringStream(jsonString);
+
+    while (std::getline(jsonStringStream,jsonline)){
+
+        json+=jsonline;
+    }
+    jsonStringStream.clear();
+
+    //std::cout<<jsonline<<"\n";
+    Node *root= LogJsonParser::CommonJSONToNodeTree(json);
+    ExecutionContext ec;
+    ec.p_mapFunctions = &op.map_Functions;
+    ec.p_MD = pMD;
+    Node *pY = MemoryManager::Inst.CreateNode(++id);
+    Node *pRESULT = MemoryManager::Inst.CreateNode(++id);
+    std::string s = "52";
+    root->SetValue((char *)s.c_str());
+    ec.map_Var["X"] = root;
+    ec.map_Var["Y"] = pY;
+    ec.map_Var["RESULT"] = pRESULT;
+    op.p_ETL->Execute(&ec);
+    Debugger db;
+    db.DebugResult(&ec.map_Var,pMD);
+    //std::cout << pRESULT->GetAggregatedValue();
+    std::string result="";
+
+    result = ResultGenerator::CreateResult(pRESULT);
+
+    return result;
+}
+
+
