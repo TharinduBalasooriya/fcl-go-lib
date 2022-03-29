@@ -16,7 +16,7 @@ class LogJsonParser {
     static void LogNodeTreetoJson(Node* parent);
     static void PrintNodeToFile(std::ofstream &newjsonfile,Node* node,int count);
     static Node *CommonJSONToNodeTree(std::string otpsString);
-    static Node  *LogJsonParser::CommonJSONToNodeTreeRecursively(rapidjson::Value& j,Node* parent);
+    static Node  *CommonJSONToNodeTreeRecursively(rapidjson::Value& j,Node* parent);
 };
 
 
