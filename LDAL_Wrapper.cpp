@@ -450,7 +450,7 @@ std::string LDAL_Wrapper::GetOTPResultV2(std::string defFilePath,std::string que
 }
 
 
-std::string LDAL_Wrapper::GetCommonJSONResult(MSTRING defFilePath, MSTRING query, MSTRING json)
+std::string LDAL_Wrapper::GetCommonJSONResult(MSTRING defFilePath, MSTRING queryString, MSTRING jsonString)
 {
     int id = 0;
     DefFileReader dfr;

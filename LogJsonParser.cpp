@@ -9,9 +9,9 @@
 #include "Strings.h"
 #include "Entity.h"
 #include "easylogging++.h"
-#include "rapidjson/document.h"
-#include "rapidjson/writer.h"
-#include "rapidjson/stringbuffer.h"
+#include "document.h"
+#include "writer.h"
+#include "stringbuffer.h"
 #include "json.hpp"
 
 
