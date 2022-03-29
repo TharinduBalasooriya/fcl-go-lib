@@ -1,0 +1,1 @@
+CMakeLists.txt not found in \\wsl$\Ubuntu-18.04\home\thari\fcl-lib-gooo\fcl-go-lib Select CMakeLists.txt
